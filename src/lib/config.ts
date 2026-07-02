@@ -23,14 +23,12 @@ export const siteConfig = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
 
   contact: {
-    // TODO: reemplazar por el número real de WhatsApp de ÓRBITA Digital.
-    // Formato sin espacios ni símbolos, con código de país (Argentina = 54 9 + código de área).
-    whatsappNumber: "5491100000000",
-    whatsappDisplay: "+54 9 11 0000-0000",
+    // Formato sin espacios ni símbolos, con código de país + 9 (Argentina, línea móvil).
+    whatsappNumber: "5493757516108",
+    whatsappDisplay: "+54 9 3757 51-6108",
     whatsappDefaultMessage:
       "Hola ÓRBITA Digital, quiero hacer una consulta sobre sus servicios.",
-    // TODO: reemplazar por el email real de contacto.
-    email: "hola@orbitadigital.com.ar",
+    email: "juanjmg1436@gmail.com",
   },
 
   // Redes sociales: dejá vacío ("") el enlace que todavía no exista.
@@ -42,17 +40,17 @@ export const siteConfig = {
   },
 
   nav: [
-    { label: "Inicio", href: "#inicio" },
-    { label: "Servicios", href: "#servicios" },
-    { label: "Soluciones", href: "#soluciones" },
-    { label: "Proyectos", href: "#proyectos" },
-    { label: "Sobre ÓRBITA", href: "#sobre-orbita" },
-    { label: "Contacto", href: "#contacto" },
+    { label: "Inicio", href: "/" },
+    { label: "Servicios", href: "/servicios" },
+    { label: "Soluciones", href: "/soluciones" },
+    { label: "Proyectos", href: "/proyectos" },
+    { label: "Sobre ÓRBITA", href: "/sobre-orbita" },
+    { label: "Contacto", href: "/contacto" },
   ],
 
   ctaPrimary: {
     label: "Solicitar presupuesto",
-    href: "#contacto",
+    href: "/contacto",
   },
 
   serviceTypes: [

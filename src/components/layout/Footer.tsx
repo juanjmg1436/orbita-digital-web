@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Mail } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { Container } from "@/components/ui/Container";
@@ -27,7 +28,7 @@ export function Footer() {
       <Container className="relative py-16">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.4fr_1fr_1fr]">
           <div className="flex flex-col gap-4">
-            <Logo variant="icon-text" theme="dark" size="md" href="#inicio" />
+            <Logo variant="icon-text" theme="dark" size="md" href="/" />
             <p className="max-w-sm text-sm leading-relaxed">{siteConfig.brand.slogan}</p>
             <p className="max-w-sm text-sm leading-relaxed text-white/50">
               {siteConfig.brand.institutionalPhrase}
@@ -57,9 +58,9 @@ export function Footer() {
             <ul className="mt-4 flex flex-col gap-3">
               {siteConfig.nav.map((item) => (
                 <li key={item.href}>
-                  <a href={item.href} className="text-sm transition-colors hover:text-white">
+                  <Link href={item.href} className="text-sm transition-colors hover:text-white">
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -77,9 +77,14 @@ reservada para una futura funcionalidad de administración segura del lado del s
 
 ```text
 src/
-  app/                    Rutas de Next.js (App Router)
+  app/                    Rutas de Next.js (App Router), una carpeta por página
     layout.tsx             Layout raíz: fuentes, metadata SEO, Navbar/Footer
-    page.tsx                Composición de la página de inicio
+    page.tsx                Inicio (hero + resumen de servicios + diferencial + CTA)
+    servicios/page.tsx      Servicios + tienda digital destacada
+    soluciones/page.tsx     Soluciones por tipo de organización
+    proyectos/page.tsx      Proyectos demo
+    sobre-orbita/page.tsx   Sobre ÓRBITA Digital + proceso de trabajo
+    contacto/page.tsx       Formulario de contacto
     sitemap.ts, robots.ts   SEO
     opengraph-image.tsx     Imagen para redes sociales (Open Graph / Twitter)
     icon.png, apple-icon.png  Favicon (ícono de ÓRBITA Digital)
@@ -87,7 +92,7 @@ src/
   components/
     brand/                 Logo de ÓRBITA Digital (variantes ícono / ícono+texto / +eslogan)
     layout/                Navbar y Footer
-    sections/               Cada sección de la home (Hero, Servicios, Soluciones, etc.)
+    sections/               Cada sección, reutilizada entre páginas (Hero, Servicios, Soluciones, etc.)
     ui/                     Componentes reutilizables (Button, Container, Badge, etc.)
     icons/                  Íconos de redes sociales y WhatsApp
   lib/

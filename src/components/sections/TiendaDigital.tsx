@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowRight, Boxes, CreditCard, ShoppingBag, ShoppingCart, Store } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Container } from "@/components/ui/Container";
@@ -61,7 +62,7 @@ export function TiendaDigital() {
           <p className="rounded-2xl border border-orbit-green-400/30 bg-orbit-green-400/10 px-6 py-4 text-sm font-medium leading-relaxed text-orbit-green-400 text-pretty">
             El dinero se acredita directamente en la cuenta de Mercado Pago del comercio.
           </p>
-          <Button as="a" href="#contacto" variant="primary" size="lg">
+          <Button as={Link} href="/contacto" variant="primary" size="lg">
             Quiero mi tienda digital
             <ArrowRight className="h-4 w-4" />
           </Button>

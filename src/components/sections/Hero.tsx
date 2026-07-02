@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowRight, Compass } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -43,11 +44,11 @@ export function Hero() {
           </p>
 
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Button as="a" href={siteConfig.ctaPrimary.href} variant="primary" size="lg">
+            <Button as={Link} href={siteConfig.ctaPrimary.href} variant="primary" size="lg">
               Solicitar presupuesto
               <ArrowRight className="h-4 w-4" />
             </Button>
-            <Button as="a" href="#servicios" variant="ghost" size="lg">
+            <Button as={Link} href="/soluciones" variant="ghost" size="lg">
               Ver soluciones
             </Button>
           </div>

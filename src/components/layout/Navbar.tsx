@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { Button } from "@/components/ui/Button";
@@ -10,6 +12,15 @@ import { siteConfig } from "@/lib/config";
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Cierra el menú móvil al cambiar de página. Ajuste de estado durante el
+  // renderizado (no en un efecto) para evitar un renderizado en cascada.
+  const [lastPathname, setLastPathname] = useState(pathname);
+  if (pathname !== lastPathname) {
+    setLastPathname(pathname);
+    if (open) setOpen(false);
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -37,7 +48,11 @@ export function Navbar() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
-  const solid = scrolled || open;
+  // Solo el inicio abre con un hero oscuro a pantalla completa: ahí el navbar
+  // puede arrancar transparente. El resto de las páginas empieza con fondo
+  // claro, así que el navbar debe verse sólido desde el primer momento.
+  const isHome = pathname === "/";
+  const solid = !isHome || scrolled || open;
 
   return (
     <header
@@ -48,29 +63,37 @@ export function Navbar() {
       }`}
     >
       <Container className="flex h-18 items-center justify-between py-3">
-        <Logo variant="icon-text" theme={solid ? "light" : "dark"} size="sm" priority />
+        <Logo variant="icon-text" theme={solid ? "light" : "dark"} size="sm" href="/" priority />
 
         <nav aria-label="Navegación principal" className="hidden lg:block">
           <ul className="flex items-center gap-8">
-            {siteConfig.nav.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  className={`text-sm font-semibold tracking-tight transition-colors ${
-                    solid
-                      ? "text-orbit-navy-800 hover:text-orbit-navy-600"
-                      : "text-white/85 hover:text-white"
-                  }`}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
+            {siteConfig.nav.map((item) => {
+              const active = pathname === item.href;
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    aria-current={active ? "page" : undefined}
+                    className={`text-sm font-semibold tracking-tight transition-colors ${
+                      active
+                        ? solid
+                          ? "text-orbit-navy-600"
+                          : "text-white"
+                        : solid
+                          ? "text-orbit-navy-800 hover:text-orbit-navy-600"
+                          : "text-white/85 hover:text-white"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
         <div className="hidden lg:block">
-          <Button as="a" href={siteConfig.ctaPrimary.href} variant="primary" size="md">
+          <Button as={Link} href={siteConfig.ctaPrimary.href} variant="primary" size="md">
             {siteConfig.ctaPrimary.label}
           </Button>
         </div>
@@ -100,20 +123,28 @@ export function Navbar() {
         <Container className="pb-6">
           <nav aria-label="Navegación móvil">
             <ul className="flex flex-col gap-1 rounded-2xl bg-white p-3 shadow-lg shadow-orbit-navy-900/10">
-              {siteConfig.nav.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="block rounded-xl px-4 py-3 text-base font-semibold text-orbit-navy-800 hover:bg-orbit-gray-50"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
+              {siteConfig.nav.map((item) => {
+                const active = pathname === item.href;
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      aria-current={active ? "page" : undefined}
+                      onClick={() => setOpen(false)}
+                      className={`block rounded-xl px-4 py-3 text-base font-semibold ${
+                        active
+                          ? "bg-orbit-navy-600/10 text-orbit-navy-600"
+                          : "text-orbit-navy-800 hover:bg-orbit-gray-50"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
               <li className="pt-2">
                 <Button
-                  as="a"
+                  as={Link}
                   href={siteConfig.ctaPrimary.href}
                   variant="primary"
                   size="lg"

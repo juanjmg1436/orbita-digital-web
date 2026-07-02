@@ -31,7 +31,7 @@ export function Logo({
   variant = "icon-text",
   theme = "light",
   size = "md",
-  href = "#inicio",
+  href = "/",
   className = "",
   priority = false,
 }: LogoProps) {
