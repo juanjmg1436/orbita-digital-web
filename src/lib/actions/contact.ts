@@ -4,7 +4,25 @@ import { headers } from "next/headers";
 import { contactFormSchema } from "@/lib/validation";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { checkRateLimit } from "@/lib/rate-limit";
+import { profileQuestionsByService } from "@/lib/quote-profile";
+import type { ServiceTypeValue } from "@/lib/config";
 import type { ContactFormState } from "@/lib/actions/contact-state";
+
+const MAX_PROFILE_ANSWER_LENGTH = 300;
+
+function buildProfileDetails(serviceType: ServiceTypeValue, formData: FormData) {
+  const questions = profileQuestionsByService[serviceType] ?? [];
+  if (questions.length === 0) return null;
+
+  const details: Record<string, string> = {};
+  for (const question of questions) {
+    const answer = String(formData.get(question.name) ?? "").trim().slice(0, MAX_PROFILE_ANSWER_LENGTH);
+    if (answer) {
+      details[question.label] = answer;
+    }
+  }
+  return Object.keys(details).length > 0 ? details : null;
+}
 
 // Tiempo mínimo esperado entre que se renderiza el formulario y se envía.
 // Los bots suelen completar y enviar formularios en milisegundos.
@@ -83,6 +101,11 @@ export async function submitContactForm(
   try {
     const supabase = getSupabaseServerClient();
 
+    const profileDetails = buildProfileDetails(
+      parsed.data.service_type as ServiceTypeValue,
+      formData
+    );
+
     const { error } = await supabase.from("contact_requests").insert({
       full_name: parsed.data.full_name,
       organization: parsed.data.organization || null,
@@ -90,6 +113,7 @@ export async function submitContactForm(
       email: parsed.data.email,
       service_type: parsed.data.service_type,
       message: parsed.data.message,
+      profile_details: profileDetails,
     });
 
     if (error) {

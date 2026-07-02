@@ -2,7 +2,8 @@
 
 import { useActionState, useState } from "react";
 import type { ChangeEvent } from "react";
-import { CircleCheck, Loader2, Mail, MessageCircle, TriangleAlert } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, CircleCheck, Loader2, Mail, MessageCircle, TriangleAlert } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
@@ -10,6 +11,7 @@ import { WhatsAppIcon } from "@/components/icons/SocialIcons";
 import { submitContactForm } from "@/lib/actions/contact";
 import { initialContactFormState } from "@/lib/actions/contact-state";
 import { siteConfig, getWhatsAppLink } from "@/lib/config";
+import { profileQuestionsByService } from "@/lib/quote-profile";
 
 const inputClasses =
   "w-full rounded-xl border bg-white px-4 py-3 text-sm text-orbit-navy-900 placeholder:text-orbit-gray-400 transition-colors focus:outline-none focus:ring-2 focus:ring-orbit-sky-500/40";
@@ -44,15 +46,25 @@ export function Contacto() {
   // ya había escrito.
   const [values, setValues] = useState(emptyValues);
 
-  // Ajuste de estado durante el renderizado (no en un efecto) al detectar un
-  // envío exitoso nuevo: es el patrón que recomienda React para "resetear"
-  // estado en respuesta a un cambio, evitando un renderizado extra.
+  // Preguntas de perfil según el tipo de servicio elegido, para personalizar
+  // el pedido de presupuesto.
+  const [profileValues, setProfileValues] = useState<Record<string, string>>({});
+
+  // Ajustes de estado durante el renderizado (no en un efecto): evitan un
+  // renderizado extra respecto de hacerlo en un useEffect.
   const [lastHandledState, setLastHandledState] = useState(state);
   if (state !== lastHandledState) {
     setLastHandledState(state);
     if (state.status === "success") {
       setValues(emptyValues);
+      setProfileValues({});
     }
+  }
+
+  const [lastServiceType, setLastServiceType] = useState(values.service_type);
+  if (values.service_type !== lastServiceType) {
+    setLastServiceType(values.service_type);
+    setProfileValues({});
   }
 
   function handleChange(
@@ -61,6 +73,16 @@ export function Contacto() {
     const { name, value } = event.target;
     setValues((prev) => ({ ...prev, [name]: value }));
   }
+
+  function handleProfileChange(event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
+    const { name, value } = event.target;
+    setProfileValues((prev) => ({ ...prev, [name]: value }));
+  }
+
+  const profileQuestions =
+    values.service_type in profileQuestionsByService
+      ? profileQuestionsByService[values.service_type as keyof typeof profileQuestionsByService]
+      : [];
 
   const errors = state.fieldErrors ?? {};
 
@@ -107,6 +129,14 @@ export function Contacto() {
             <MessageCircle className="h-4.5 w-4.5" />
             Consultar por WhatsApp
           </Button>
+
+          <Link
+            href="/preguntas-frecuentes"
+            className="inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-orbit-navy-600 hover:text-orbit-navy-800"
+          >
+            ¿Tenés dudas? Mirá las preguntas frecuentes
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
 
         <form
@@ -216,6 +246,49 @@ export function Contacto() {
             </select>
             {errors.service_type && <p className="text-xs text-red-500">{errors.service_type}</p>}
           </div>
+
+          {profileQuestions.length > 0 && (
+            <div className="flex flex-col gap-5 rounded-2xl border border-orbit-sky-500/20 bg-orbit-sky-500/5 p-4 sm:p-5">
+              <p className="text-xs font-semibold uppercase tracking-wider text-orbit-sky-600">
+                Contanos un poco más para armar tu presupuesto
+              </p>
+              {profileQuestions.map((question) => (
+                <div key={question.name} className="flex flex-col gap-1.5">
+                  <label htmlFor={question.name} className="text-sm font-semibold text-orbit-navy-900">
+                    {question.label}
+                  </label>
+                  {question.type === "select" ? (
+                    <select
+                      id={question.name}
+                      name={question.name}
+                      value={profileValues[question.name] ?? ""}
+                      onChange={handleProfileChange}
+                      className={`${inputClasses} border-orbit-gray-200 focus:border-orbit-sky-500 appearance-none`}
+                    >
+                      <option value="" disabled>
+                        Seleccioná una opción
+                      </option>
+                      {question.options?.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  ) : (
+                    <input
+                      id={question.name}
+                      name={question.name}
+                      type="text"
+                      value={profileValues[question.name] ?? ""}
+                      onChange={handleProfileChange}
+                      placeholder={question.placeholder}
+                      className={`${inputClasses} border-orbit-gray-200 focus:border-orbit-sky-500`}
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
 
           <div className="flex flex-col gap-1.5">
             <label htmlFor="message" className="text-sm font-semibold text-orbit-navy-900">

@@ -45,6 +45,7 @@ export const siteConfig = {
     { label: "Soluciones", href: "/soluciones" },
     { label: "Proyectos", href: "/proyectos" },
     { label: "Sobre ÓRBITA", href: "/sobre-orbita" },
+    { label: "FAQ", href: "/preguntas-frecuentes" },
     { label: "Contacto", href: "/contacto" },
   ],
 

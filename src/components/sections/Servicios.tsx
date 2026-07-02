@@ -16,7 +16,7 @@ const services: Service[] = [
     icon: Globe,
     title: "Sitios web corporativos",
     description:
-      "Diseñamos sitios web profesionales para empresas, comercios, instituciones y profesionales que necesitan comunicar sus servicios, generar confianza y facilitar el contacto con sus clientes.",
+      "Tu sitio web suele ser la primera impresión que se lleva un cliente. Lo diseñamos para que se vea profesional, cuente con claridad lo que ofrecés y le facilite encontrarte y escribirte, desde la computadora o el celular.",
     features: [
       "Diseño adaptable a celular",
       "Información clara de servicios",
@@ -31,7 +31,7 @@ const services: Service[] = [
     icon: ShoppingCart,
     title: "Tiendas digitales a medida",
     description:
-      "Creamos tiendas online propias para que tu negocio pueda mostrar productos, recibir pedidos, gestionar stock y cobrar de manera digital.",
+      "Vender por internet no debería depender de una plataforma ajena. Creamos una tienda propia, con tu identidad, para que puedas mostrar tus productos, recibir pedidos y cobrar online sin complicarte.",
     features: [
       "Catálogo de productos",
       "Carrito de compras",
@@ -48,7 +48,7 @@ const services: Service[] = [
     icon: Workflow,
     title: "Sistemas y aplicaciones web",
     description:
-      "Desarrollamos herramientas digitales para ordenar procesos internos, centralizar información y simplificar tareas administrativas.",
+      "Cuando la información vive repartida en planillas, cuadernos o mensajes sueltos, es fácil perder el control. Desarrollamos herramientas simples para ordenar tus procesos internos y tener todo a mano cuando lo necesites.",
     features: [
       "Gestión de clientes",
       "Pedidos",
@@ -57,14 +57,14 @@ const services: Service[] = [
       "Formularios internos",
       "Registros administrativos",
       "Paneles de control",
-      "Sistemas a medida",
+      "Adaptado a tu forma de trabajar",
     ],
   },
   {
     icon: GraduationCap,
     title: "Capacitación corporativa interna",
     description:
-      "Creamos plataformas de capacitación para que las organizaciones puedan formar a sus equipos con cursos breves, actividades, evaluaciones y seguimiento.",
+      "Formar a un equipo lleva tiempo y no siempre es fácil de sostener en el día a día. Creamos plataformas de capacitación con cursos breves y seguimiento, para que cada persona aprenda a su ritmo sin frenar el trabajo.",
     features: [
       "Inducción de personal",
       "Procedimientos internos",

@@ -101,6 +101,7 @@ src/
     rate-limit.ts             Límite simple de solicitudes anti-spam
     actions/contact.ts        Server Action que procesa el formulario de contacto
     supabase/server.ts        Cliente de Supabase para uso en el servidor
+    quote-profile.ts          Preguntas de perfil según el tipo de servicio elegido
 supabase/
   migrations/               Migración SQL de la tabla contact_requests + políticas RLS
 public/
@@ -155,7 +156,9 @@ Las consultas del formulario de contacto se guardan en la tabla `contact_request
 (ver la migración en [`supabase/migrations/`](./supabase/migrations/)).
 
 **Columnas**: `id`, `created_at`, `full_name`, `organization`, `whatsapp`, `email`,
-`service_type`, `message`, `status` (inicia siempre en `nuevo`).
+`service_type`, `message`, `status` (inicia siempre en `nuevo`), `profile_details`
+(JSON opcional con las respuestas a las preguntas personalizadas según el tipo de
+servicio elegido — ver [`src/lib/quote-profile.ts`](./src/lib/quote-profile.ts)).
 
 **Row Level Security**:
 

@@ -18,12 +18,12 @@ const differentiators: Differentiator[] = [
   {
     icon: LayoutTemplate,
     title: "Diseño claro y fácil de usar",
-    description: "Interfaces simples para que cualquier persona del equipo pueda usarlas sin fricción.",
+    description: "Pantallas simples que cualquier persona del equipo puede aprender a usar en minutos, sin necesitar ayuda técnica.",
   },
   {
     icon: Cog,
     title: "Tecnología pensada para procesos reales",
-    description: "Herramientas que resuelven tareas concretas, sin funciones innecesarias.",
+    description: "Cada herramienta resuelve una tarea concreta de tu día a día, sin funciones de más que solo compliquen las cosas.",
   },
   {
     icon: Handshake,
