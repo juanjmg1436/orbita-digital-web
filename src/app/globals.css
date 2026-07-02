@@ -2,25 +2,127 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0a1530;
+
+  /* ÓRBITA Digital — paleta de marca (extraída del ícono oficial) */
+  --color-orbit-navy-950: #05070f;
+  --color-orbit-navy-900: #0a1530;
+  --color-orbit-navy-800: #0f1f45;
+  --color-orbit-navy-700: #142c63;
+  --color-orbit-navy-600: #1848b8;
+  --color-orbit-navy-500: #2a5cd6;
+
+  --color-orbit-sky-300: #a6e6f7;
+  --color-orbit-sky-400: #5fd3ef;
+  --color-orbit-sky-500: #18b0e0;
+  --color-orbit-sky-600: #0f8fbd;
+
+  --color-orbit-violet-400: #9b8cf2;
+  --color-orbit-violet-500: #7c6ae8;
+
+  --color-orbit-green-400: #3fe0b0;
+  --color-orbit-green-500: #22c99a;
+
+  --color-orbit-gray-50: #f6f8fc;
+  --color-orbit-gray-100: #eef1f8;
+  --color-orbit-gray-200: #dde3ee;
+  --color-orbit-gray-400: #94a1b8;
+  --color-orbit-gray-600: #566079;
+  --color-orbit-gray-900: #10192e;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-sans: var(--font-jakarta);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-orbit-navy-950: var(--color-orbit-navy-950);
+  --color-orbit-navy-900: var(--color-orbit-navy-900);
+  --color-orbit-navy-800: var(--color-orbit-navy-800);
+  --color-orbit-navy-700: var(--color-orbit-navy-700);
+  --color-orbit-navy-600: var(--color-orbit-navy-600);
+  --color-orbit-navy-500: var(--color-orbit-navy-500);
+
+  --color-orbit-sky-300: var(--color-orbit-sky-300);
+  --color-orbit-sky-400: var(--color-orbit-sky-400);
+  --color-orbit-sky-500: var(--color-orbit-sky-500);
+  --color-orbit-sky-600: var(--color-orbit-sky-600);
+
+  --color-orbit-violet-400: var(--color-orbit-violet-400);
+  --color-orbit-violet-500: var(--color-orbit-violet-500);
+
+  --color-orbit-green-400: var(--color-orbit-green-400);
+  --color-orbit-green-500: var(--color-orbit-green-500);
+
+  --color-orbit-gray-50: var(--color-orbit-gray-50);
+  --color-orbit-gray-100: var(--color-orbit-gray-100);
+  --color-orbit-gray-200: var(--color-orbit-gray-200);
+  --color-orbit-gray-400: var(--color-orbit-gray-400);
+  --color-orbit-gray-600: var(--color-orbit-gray-600);
+  --color-orbit-gray-900: var(--color-orbit-gray-900);
+
+  --animate-orbit-spin-slow: orbit-spin 18s linear infinite;
+  --animate-orbit-pulse: orbit-pulse 3.5s ease-in-out infinite;
+  --animate-orbit-float: orbit-float 6s ease-in-out infinite;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+}
+
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes orbit-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Scroll suave para navegación por anclas, compensando la barra fija */
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+::selection {
+  background: var(--color-orbit-sky-400);
+  color: var(--color-orbit-navy-950);
 }

@@ -32,9 +32,17 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+
+# credenciales locales (nunca deben subirse al repositorio)
+CREDENTIALS.md
+credentials.md
 
 # vercel
 .vercel
+
+# configuración local de Claude Code (no forma parte del sitio)
+.claude/
 
 # typescript
 *.tsbuildinfo
