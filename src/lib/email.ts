@@ -64,13 +64,19 @@ export async function sendNewLeadNotification(lead: NewLeadEmailInput) {
 
   try {
     const resend = new Resend(apiKey);
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: "ÓRBITA Digital <onboarding@resend.dev>",
       to: siteConfig.contact.email,
       replyTo: lead.email,
       subject: `Nueva consulta: ${lead.full_name} (${serviceLabel})`,
       html,
     });
+
+    if (error) {
+      // Resend puede devolver un error "resuelto" (sin lanzar excepción),
+      // por ejemplo si la API key es inválida o el remitente no es válido.
+      console.error("Resend rechazó el email de notificación:", error);
+    }
   } catch (err) {
     // No dejamos que un error de email tumbe el envío del formulario: la
     // consulta ya se guardó correctamente en Supabase antes de llegar acá.
