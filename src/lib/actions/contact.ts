@@ -1,10 +1,12 @@
 "use server";
 
 import { headers } from "next/headers";
+import { after } from "next/server";
 import { contactFormSchema } from "@/lib/validation";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { profileQuestionsByService } from "@/lib/quote-profile";
+import { sendNewLeadNotification } from "@/lib/email";
 import type { ServiceTypeValue } from "@/lib/config";
 import type { ContactFormState } from "@/lib/actions/contact-state";
 
@@ -124,6 +126,20 @@ export async function submitContactForm(
           "No pudimos enviar tu consulta. Probá de nuevo o escribinos por WhatsApp.",
       };
     }
+
+    // Se ejecuta después de responder al usuario: si el email de aviso falla
+    // o tarda, no afecta el envío del formulario (la consulta ya se guardó).
+    after(() =>
+      sendNewLeadNotification({
+        full_name: parsed.data.full_name,
+        organization: parsed.data.organization || null,
+        whatsapp: parsed.data.whatsapp,
+        email: parsed.data.email,
+        service_type: parsed.data.service_type,
+        message: parsed.data.message,
+        profile_details: profileDetails,
+      })
+    );
   } catch (err) {
     console.error("Error inesperado al enviar la consulta:", err);
     return {

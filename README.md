@@ -67,11 +67,16 @@ ignorados en `.gitignore`).
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY`  | Supabase → Project Settings → API → anon public                     | Sí        |
 | `SUPABASE_SERVICE_ROLE_KEY`      | Supabase → Project Settings → API → service_role                    | **No**    |
 | `NEXT_PUBLIC_SITE_URL`           | URL pública del sitio (Vercel o dominio propio, sin barra final)     | Sí        |
+| `RESEND_API_KEY`                | [resend.com](https://resend.com) → API Keys (opcional)              | **No**    |
 
 `SUPABASE_SERVICE_ROLE_KEY` no se usa en la versión actual del sitio (el formulario de
 contacto inserta datos usando la clave anónima, protegida por Row Level Security). Queda
 reservada para una futura funcionalidad de administración segura del lado del servidor.
 **Nunca** debe exponerse en el navegador ni usarse en variables `NEXT_PUBLIC_*`.
+
+`RESEND_API_KEY` es opcional: si no está configurada, el formulario de contacto sigue
+guardando las consultas en Supabase con total normalidad, simplemente no se envía el
+aviso por email. Ver [Aviso por email de consultas nuevas](#aviso-por-email-de-consultas-nuevas).
 
 ## Estructura del proyecto
 
@@ -174,6 +179,29 @@ Si necesitás replicar la tabla en otro proyecto de Supabase, corré el contenid
 `supabase/migrations/20260702130000_create_contact_requests.sql` en el SQL Editor del
 proyecto, o usá la [Supabase CLI](https://supabase.com/docs/guides/local-development)
 si preferís un flujo de migraciones local.
+
+## Aviso por email de consultas nuevas
+
+Cada vez que alguien completa el formulario de contacto, además de guardarse en
+Supabase, se envía un email de aviso (vía [Resend](https://resend.com)) a la dirección
+configurada en `contact.email` dentro de [`src/lib/config.ts`](./src/lib/config.ts),
+con los datos de la consulta y las respuestas de perfil si las hubo.
+
+Para activarlo:
+
+1. Creá una cuenta gratuita en [resend.com](https://resend.com).
+2. Generá una API Key en **API Keys** dentro del dashboard.
+3. Cargala como `RESEND_API_KEY` en `.env.local` (desarrollo) y en las variables de
+   entorno de Vercel (producción).
+
+Sin esa variable configurada, el formulario sigue funcionando exactamente igual: la
+consulta se guarda en Supabase, simplemente no se envía el email. La lógica está en
+[`src/lib/email.ts`](./src/lib/email.ts).
+
+Los emails se envían desde la dirección de prueba `onboarding@resend.dev` de Resend.
+Para enviarlos desde un dominio propio (por ejemplo `contacto@orbitadigital.com.ar`),
+hay que verificar ese dominio en **Domains** dentro de Resend y actualizar el campo
+`from` en `src/lib/email.ts`.
 
 ## Despliegue en Vercel
 
