@@ -1,6 +1,5 @@
 import {
   ClipboardList,
-  FlaskConical,
   GraduationCap,
   LayoutDashboard,
   Rocket,
@@ -39,15 +38,6 @@ const projects: Project[] = [
       "Cursos breves, actividades y evaluaciones para formar equipos de trabajo con seguimiento de avance.",
     status: "Demo funcional",
     gradient: "from-orbit-navy-600 to-orbit-sky-500",
-  },
-  {
-    icon: FlaskConical,
-    category: "Simuladores de trámites",
-    title: "Simulador de trámites y gestión administrativa",
-    description:
-      "Un espacio para practicar trámites y tareas administrativas paso a paso, antes de hacerlas en un sistema real.",
-    status: "Demo funcional",
-    gradient: "from-orbit-violet-500 to-orbit-navy-600",
   },
   {
     icon: Users,
