@@ -34,7 +34,7 @@ const differentiators: Differentiator[] = [
 
 export function Diferencial() {
   return (
-    <section className="bg-white py-24 sm:py-28">
+    <section className="bg-orbit-gray-50 py-24 sm:py-28">
       <Container className="flex flex-col gap-14">
         <SectionHeading
           eyebrow="Diferencial"
@@ -46,7 +46,7 @@ export function Diferencial() {
           {differentiators.map(({ icon: Icon, title, description }) => (
             <div
               key={title}
-              className="flex flex-col gap-4 rounded-3xl border border-orbit-gray-200 bg-orbit-gray-50 p-7"
+              className="flex flex-col gap-4 rounded-3xl border border-orbit-gray-200 bg-white p-7"
             >
               <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-orbit-navy-600 text-white">
                 <Icon className="h-5 w-5" />

@@ -16,7 +16,7 @@ const services: Service[] = [
     icon: Globe,
     title: "Sitios web corporativos",
     description:
-      "Tu sitio web suele ser la primera impresión que se lleva un cliente. Lo diseñamos para que se vea profesional, cuente con claridad lo que ofrecés y le facilite encontrarte y escribirte, desde la computadora o el celular.",
+      "Tu sitio web suele ser la primera impresión que se lleva un cliente. Lo diseñamos para que se vea profesional, cuente con claridad lo que ofrecés y le facilite encontrarte y escribirte. Cuanto más fácil sea contactarte, más consultas se convierten en ventas.",
     features: [
       "Diseño adaptable a celular",
       "Información clara de servicios",
@@ -31,7 +31,7 @@ const services: Service[] = [
     icon: ShoppingCart,
     title: "Tiendas digitales a medida",
     description:
-      "Vender por internet no debería depender de una plataforma ajena. Creamos una tienda propia, con tu identidad, para que puedas mostrar tus productos, recibir pedidos y cobrar online sin complicarte.",
+      "Vender por internet no debería depender de una plataforma ajena. Creamos una tienda propia, con tu identidad, para que puedas mostrar tus productos, recibir pedidos y cobrar online sin complicarte. Tu negocio queda abierto las 24 horas, todos los días.",
     features: [
       "Catálogo de productos",
       "Carrito de compras",
@@ -48,7 +48,7 @@ const services: Service[] = [
     icon: Workflow,
     title: "Sistemas y aplicaciones web",
     description:
-      "Cuando la información vive repartida en planillas, cuadernos o mensajes sueltos, es fácil perder el control. Desarrollamos herramientas simples para ordenar tus procesos internos y tener todo a mano cuando lo necesites.",
+      "Cuando la información vive repartida en planillas, cuadernos o mensajes sueltos, es fácil perder el control y cometer errores. Desarrollamos herramientas simples para ordenar tus procesos y tener todo a mano, así ganás tiempo para las decisiones importantes.",
     features: [
       "Gestión de clientes",
       "Pedidos",
@@ -64,7 +64,7 @@ const services: Service[] = [
     icon: GraduationCap,
     title: "Capacitación corporativa interna",
     description:
-      "Formar a un equipo lleva tiempo y no siempre es fácil de sostener en el día a día. Creamos plataformas de capacitación con cursos breves y seguimiento, para que cada persona aprenda a su ritmo sin frenar el trabajo.",
+      "Formar a un equipo lleva tiempo y no siempre es fácil de sostener en el día a día. Creamos plataformas de capacitación con cursos breves y seguimiento, para que cada persona aprenda a su ritmo sin frenar el trabajo. Un equipo mejor preparado se nota en la atención que reciben tus clientes.",
     features: [
       "Inducción de personal",
       "Procedimientos internos",

@@ -38,6 +38,10 @@ export function TiendaDigital() {
             Desarrollamos una tienda online propia con tu identidad visual, catálogo, carrito,
             pedidos, stock y cobro digital mediante Mercado Pago.
           </p>
+          <p className="text-sm leading-relaxed text-orbit-sky-300 text-pretty">
+            Mientras tu local está cerrado, tu tienda sigue abierta: cada persona que entra
+            puede elegir, comprar y pagar sin esperar a que vuelvas a atender.
+          </p>
         </div>
 
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 lg:flex-row lg:items-center">
