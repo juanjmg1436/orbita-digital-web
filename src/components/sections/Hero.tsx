@@ -31,7 +31,7 @@ export function Hero() {
         <div className="flex flex-col items-start gap-7">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-orbit-sky-300">
             <Compass className="h-3.5 w-3.5" />
-            {siteConfig.brand.institutionalPhrase}
+            Para emprendedores, comercios, empresas e instituciones
           </span>
 
           <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-white text-balance sm:text-5xl lg:text-[3.4rem]">
@@ -39,8 +39,9 @@ export function Hero() {
           </h1>
 
           <p className="max-w-xl text-lg leading-relaxed text-white/70 text-pretty">
-            Creamos sitios web, tiendas digitales, sistemas de gestión y plataformas de
-            capacitación para ayudarte a vender, organizar procesos y crecer.
+            Te ayudamos a vender más y organizar mejor tu negocio u organización. Creamos
+            sitios web, tiendas online, sistemas simples para el día a día y capacitación
+            para tu equipo, pensado para que lo uses vos, sin ser experto en tecnología.
           </p>
 
           <div className="flex flex-col gap-3 sm:flex-row">
@@ -54,7 +55,7 @@ export function Hero() {
           </div>
 
           <p className="pt-2 text-sm font-medium text-white/45">
-            Tecnología pensada para necesidades reales.
+            Contanos tu idea sin compromiso: te respondemos por WhatsApp.
           </p>
         </div>
 

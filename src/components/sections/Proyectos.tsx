@@ -33,7 +33,7 @@ const statusTone: Record<ProjectStatus, "green" | "sky" | "violet"> = {
 const projects: Project[] = [
   {
     icon: GraduationCap,
-    category: "Plataformas de capacitación autoasistida",
+    category: "Capacitación online",
     title: "Campus de inducción y procedimientos internos",
     description:
       "Cursos breves, actividades y evaluaciones para formar equipos de trabajo con seguimiento de avance.",
@@ -42,16 +42,16 @@ const projects: Project[] = [
   },
   {
     icon: FlaskConical,
-    category: "Simuladores administrativos",
+    category: "Simuladores de trámites",
     title: "Simulador de trámites y gestión administrativa",
     description:
-      "Entorno interactivo para practicar procesos administrativos antes de aplicarlos en un sistema real.",
+      "Un espacio para practicar trámites y tareas administrativas paso a paso, antes de hacerlas en un sistema real.",
     status: "Demo funcional",
     gradient: "from-orbit-violet-500 to-orbit-navy-600",
   },
   {
     icon: Users,
-    category: "Sistemas de recursos humanos",
+    category: "Gestión de personal",
     title: "Sistema de gestión de personal",
     description:
       "Registro de legajos, licencias y seguimiento de capacitaciones del equipo de trabajo.",
@@ -60,7 +60,7 @@ const projects: Project[] = [
   },
   {
     icon: LayoutDashboard,
-    category: "Aplicaciones de gestión",
+    category: "Organización de pedidos y stock",
     title: "Panel de gestión de pedidos y stock",
     description:
       "Aplicación para centralizar pedidos, clientes y control de inventario en un solo lugar.",
@@ -78,7 +78,7 @@ const projects: Project[] = [
   },
   {
     icon: School,
-    category: "Sitios institucionales educativos",
+    category: "Sitios para instituciones educativas",
     title: "Sitio institucional para instituciones educativas",
     description:
       "Presencia digital clara con información institucional, novedades y canales de contacto.",
@@ -87,7 +87,7 @@ const projects: Project[] = [
   },
   {
     icon: ShoppingCart,
-    category: "Soluciones de comercio digital",
+    category: "Tiendas online",
     title: "Tienda digital con Mercado Pago integrado",
     description:
       "Cobro digital, gestión de pedidos y actualización automática de stock ante cada venta.",
@@ -96,7 +96,7 @@ const projects: Project[] = [
   },
   {
     icon: ClipboardList,
-    category: "Sistemas de registro y organización",
+    category: "Registro y turnos",
     title: "Sistema de registro y turnos",
     description:
       "Organización de solicitudes, turnos o inscripciones con seguimiento de estado en tiempo real.",

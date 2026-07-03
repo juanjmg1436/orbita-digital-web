@@ -22,7 +22,7 @@ const satellites: Satellite[] = [
   },
   {
     icon: LayoutDashboard,
-    title: "Panel administrativo",
+    title: "Panel de control",
     subtitle: "Pedidos en vivo",
     top: "10%",
     left: "62%",
@@ -30,8 +30,8 @@ const satellites: Satellite[] = [
   },
   {
     icon: ClipboardList,
-    title: "Sistema de gestión",
-    subtitle: "Procesos ordenados",
+    title: "Todo organizado",
+    subtitle: "Sin planillas sueltas",
     top: "68%",
     left: "-2%",
     delay: "0.6s",
@@ -39,7 +39,7 @@ const satellites: Satellite[] = [
   {
     icon: GraduationCap,
     title: "Capacitación",
-    subtitle: "Cursos y seguimiento",
+    subtitle: "Cursos fáciles de seguir",
     top: "72%",
     left: "60%",
     delay: "1.8s",

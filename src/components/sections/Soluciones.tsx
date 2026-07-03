@@ -39,10 +39,10 @@ const tabs: SolutionTab[] = [
     items: [
       "Sitios institucionales",
       "Sistemas internos",
-      "Gestión de procesos",
+      "Tareas más simples y ordenadas",
       "Formularios digitales",
       "Presupuestos",
-      "Tableros de información",
+      "Información clara y ordenada",
       "Capacitación de equipos",
     ],
   },
