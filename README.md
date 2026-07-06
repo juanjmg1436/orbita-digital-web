@@ -87,7 +87,8 @@ src/
     page.tsx                Inicio (hero + resumen de servicios + diferencial + CTA)
     servicios/page.tsx      Servicios + tienda digital destacada
     soluciones/page.tsx     Soluciones por tipo de organización
-    proyectos/page.tsx      Proyectos demo
+    proyectos/page.tsx      Ecosistema GEST-AR (real) + demo comercial interactiva
+    demos/almacen-la-esquina/page.tsx  Demo de tienda digital y panel de gestión
     sobre-orbita/page.tsx   Sobre ÓRBITA Digital + proceso de trabajo
     contacto/page.tsx       Formulario de contacto
     sitemap.ts, robots.ts   SEO

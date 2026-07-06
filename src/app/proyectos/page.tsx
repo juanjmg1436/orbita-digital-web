@@ -4,7 +4,7 @@ import { Proyectos } from "@/components/sections/Proyectos";
 export const metadata: Metadata = {
   title: "Proyectos",
   description:
-    "Proyectos que integran tecnología, educación y gestión: plataformas de capacitación, simuladores administrativos, sistemas de gestión y soluciones de comercio digital.",
+    "GEST-AR: el ecosistema de gestión fiscal, comercial y de sueldos que desarrollamos para la Escuela Normal Superior N°9, en uso real. Más una demo interactiva de tienda digital y panel de gestión.",
 };
 
 export default function ProyectosPage() {

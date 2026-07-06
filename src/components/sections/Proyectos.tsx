@@ -102,9 +102,40 @@ export function Proyectos() {
       <Container className="flex flex-col gap-16">
         <SectionHeading
           eyebrow="Proyectos"
-          title="Un ecosistema propio en producción, y un ejemplo de cómo trabajamos con negocios."
-          description="GEST-AR es el ecosistema de gestión administrativa que desarrollamos para la Escuela Normal Superior N°9 (Wanda, Misiones): aplicaciones reales, en uso hoy. A eso sumamos una demo interactiva para mostrar cómo aplicamos la misma tecnología a un negocio."
+          title="Mirá cómo trabajamos con negocios, con un ecosistema propio ya en producción."
+          description="Armamos una demo interactiva de tienda digital y panel de gestión conectado para mostrarte el resultado. Y como prueba de que esto ya funciona en el mundo real: GEST-AR, el ecosistema que desarrollamos para la Escuela Normal Superior N°9 (Wanda, Misiones), con aplicaciones reales en uso hoy."
         />
+
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col items-center gap-1 text-center">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-orbit-violet-500">
+              Demo comercial · caso de ejemplo
+            </span>
+            <p className="text-sm text-orbit-gray-600">
+              Todavía no representa a un cliente real: es una muestra de lo que construimos.
+            </p>
+          </div>
+
+          <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-6 rounded-3xl border border-orbit-sky-500/20 bg-gradient-to-br from-orbit-navy-950 to-orbit-navy-800 p-8 text-center sm:p-10">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-orbit-sky-400/15 text-orbit-sky-300">
+              <Store className="h-7 w-7" strokeWidth={1.5} />
+            </div>
+            <Badge tone="sky" className="bg-orbit-sky-400/10 text-orbit-sky-300">
+              Demo interactiva
+            </Badge>
+            <h3 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+              Almacén La Esquina
+            </h3>
+            <p className="max-w-xl text-white/70">
+              Un caso de ejemplo para mostrarte cómo funcionaría tu negocio digitalizado: catálogo,
+              carrito, pago simulado y un panel de gestión que se actualiza solo con cada pedido.
+            </p>
+            <Button as={Link} href="/demos/almacen-la-esquina" variant="primary" size="lg">
+              Probar la demo
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
 
         <div className="flex flex-col gap-6">
           <div className="flex flex-col items-center gap-1 text-center">
@@ -151,37 +182,6 @@ export function Proyectos() {
                 </div>
               </a>
             ))}
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col items-center gap-1 text-center">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-orbit-violet-500">
-              Demo comercial · caso de ejemplo
-            </span>
-            <p className="text-sm text-orbit-gray-600">
-              Todavía no representa a un cliente real: es una muestra de lo que construimos.
-            </p>
-          </div>
-
-          <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-6 rounded-3xl border border-orbit-sky-500/20 bg-gradient-to-br from-orbit-navy-950 to-orbit-navy-800 p-8 text-center sm:p-10">
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-orbit-sky-400/15 text-orbit-sky-300">
-              <Store className="h-7 w-7" strokeWidth={1.5} />
-            </div>
-            <Badge tone="sky" className="bg-orbit-sky-400/10 text-orbit-sky-300">
-              Demo interactiva
-            </Badge>
-            <h3 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-              Almacén La Esquina
-            </h3>
-            <p className="max-w-xl text-white/70">
-              Un caso de ejemplo para mostrarte cómo funcionaría tu negocio digitalizado: catálogo,
-              carrito, pago simulado y un panel de gestión que se actualiza solo con cada pedido.
-            </p>
-            <Button as={Link} href="/demos/almacen-la-esquina" variant="primary" size="lg">
-              Probar la demo
-              <ArrowRight className="h-4 w-4" />
-            </Button>
           </div>
         </div>
       </Container>
